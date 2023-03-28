@@ -1,0 +1,68 @@
+int sensor_pin=2;
+int ysl_led=3;
+int mv_led=4;
+int krz_led=5;
+
+int sayac=0;
+
+void setup() {
+  // put your setup code here, to run once:
+pinMode(sensor_pin,INPUT);
+pinMode(ysl_led,OUTPUT);
+pinMode(mv_led,OUTPUT);
+pinMode(krz_led,OUTPUT);
+Serial.begin(9600);
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+int sensor_veri=digitalRead(sensor_pin);
+if(sensor_veri==LOW){
+sayac++;
+switch(sayac)
+{
+
+  case 1:
+
+  digitalWrite(ysl_led,HIGH);
+  delay(800);
+  break;
+
+
+
+
+  case 2:
+  digitalWrite(mv_led,HIGH);
+  delay(500);
+  break;
+
+
+
+  case 3:
+  digitalWrite(krz_led,HIGH);
+  delay(500);
+  break;
+
+
+  case 4:
+  digitalWrite(ysl_led,HIGH);
+  digitalWrite(mv_led,HIGH);
+digitalWrite(krz_led,HIGH);
+  delay(500);
+
+  sayac=0;
+  break;
+}
+}
+else
+{
+digitalWrite(ysl_led,LOW);
+  digitalWrite(mv_led,LOW);
+digitalWrite(krz_led,LOW);
+
+
+
+}
+
+}
